@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_scope_script_access">
+    <sys_scope_script_access action="INSERT_OR_UPDATE">
+        <example_stack_trace>glide.scheduler.worker.6
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.getCurrentStackTrace(ScopeAccessProvider.java:234)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.record(ScopeAccessProvider.java:202)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.access$100(ScopeAccessProvider.java:81)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider.recordAccess(ScopeAccessProvider.java:64)
+	com.glide.sys.fencing.dependency.ScopeAccessRecorder.record(ScopeAccessRecorder.java:13)
+	com.glide.script.system.ASystemInclude.recordCrossScopeDependency(ASystemInclude.java:153)
+	com.glide.script.system.ASystemInclude.include(ASystemInclude.java:133)
+	com.glide.script.AGlideRhinoScopeHandler.isScriptInclude(AGlideRhinoScopeHandler.java:45)
+	com.glide.script.GlideRhinoScopeHandler.found(GlideRhinoScopeHandler.java:27)
+	com.glide.script.ARhinoScope.get(ARhinoScope.java:77)
+	com.glide.script.RhinoScope.get(RhinoScope.java:52)
+	org.mozilla.javascript.ScriptableObject.getProperty(ScriptableObject.java:2323)
+	org.mozilla.javascript.ScriptRuntime.getExistingCtor(ScriptRuntime.java:1289)
+	org.mozilla.javascript.Context.newObject(Context.java:1637)
+	com.glide.script.RhinoObject.&lt;init&gt;(RhinoObject.java:57)
+	com.glide.script.RhinoObject.&lt;init&gt;(RhinoObject.java:49)
+	com.glide.script.GlideRhinoObject.&lt;init&gt;(GlideRhinoObject.java:40)
+	com.glide.script.GlideRhinoHelper.jsonToObject(GlideRhinoHelper.java:229)
+	com.glide.glideobject.GlideElementNameValue.deserializeFromJSON(GlideElementNameValue.java:273)
+	com.glide.glideobject.GlideElementNameValue.changes(GlideElementNameValue.java:59)
+	com.glide.script.GlideElement.shouldDecryptStorage(GlideElement.java:2059)
+	com.glide.script.GlideElement.ensureNoStorageEncryption(GlideElement.java:2040)
+	com.glide.script.GlideElement.getValue(GlideElement.java:1532)
+	com.glide.script.GlideElement.hasValue(GlideElement.java:1577)
+	com.glide.script.GlideRecord.applyDefaults(GlideRecord.java:1054)
+	com.glide.script.GlideRecord.insert(GlideRecord.java:4448)
+	com.glide.script.GlideRecord.insert(GlideRecord.java:4396)
+	com.glideapp.workflow.model.pojos.WFExecuting.create(WFExecuting.java:62)
+	com.glideapp.workflow.queue.activity.Executing.create(Executing.java:34)
+	com.glideapp.workflow.queue.activity.Executing.createStartActivity(Executing.java:38)
+	com.glideapp.workflow.engine.ContextCreator.createStartActivity(ContextCreator.java:265)
+	com.glideapp.workflow.engine.ContextCreator.create(ContextCreator.java:77)
+	com.glideapp.workflow.engine.ContextCreator.create(ContextCreator.java:37)
+	com.glideapp.workflow.WorkflowScriptAPI.jsFunction_startFlow(WorkflowScriptAPI.java:124)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.mozilla.javascript.MemberBox.invoke(MemberBox.java:138)
+	org.mozilla.javascript.FunctionObject.doInvoke(FunctionObject.java:637)
+	org.mozilla.javascript.FunctionObject.call(FunctionObject.java:581)
+	org.mozilla.javascript.ScriptRuntime.doCall(ScriptRuntime.java:2574)
+	org.mozilla.javascript.optimizer.OptRuntime.callN(OptRuntime.java:52)
+	org.mozilla.javascript.gen.sys_script_include_d3669766c0a8016901828e92d1202ac5_370._c_anonymous_7(sys_script_include.d3669766c0a8016901828e92d1202ac5:89)
+	org.mozilla.javascript.gen.sys_script_include_d3669766c0a8016901828e92d1202ac5_370.call(sys_script_include.d3669766c0a8016901828e92d1202ac5)
+	org.mozilla.javascript.ScriptRuntime.doCall2(ScriptRuntime.java:2645)
+	org.mozilla.javascript.ScriptRuntime.doCall(ScriptRuntime.java:2582)
+	org.mozilla.javascript.optimizer.OptRuntime.callN(OptRuntime.java:52)
+	org.mozilla.javascript.gen._refname__2442._c_startWF_1(&lt;refname&gt;:26)
+	org.mozilla.javascript.gen._refname__2442.call(&lt;refname&gt;)
+	org.mozilla.javascript.ScriptRuntime.doCall2(ScriptRuntime.java:2645)
+	org.mozilla.javascript.ScriptRuntime.doCall(ScriptRuntime.java:2582)
+	org.mozilla.javascript.optimizer.OptRuntime.callName(OptRuntime.java:63)
+	org.mozilla.javascript.gen._refname__2442._c_script_0(&lt;refname&gt;:11)
+	org.mozilla.javascript.gen._refname__2442.call(&lt;refname&gt;)
+	org.mozilla.javascript.ContextFactory.doTopCall(ContextFactory.java:560)
+	org.mozilla.javascript.ScriptRuntime.doTopCall(ScriptRuntime.java:3439)
+	org.mozilla.javascript.gen._refname__2442.call(&lt;refname&gt;)
+	org.mozilla.javascript.gen._refname__2442.exec(&lt;refname&gt;)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:236)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:107)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:73)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:64)
+	com.glide.script.Evaluator.evaluateString(Evaluator.java:91)
+	com.snc.automation.ScriptJob.execute(ScriptJob.java:38)
+	com.glide.schedule.JobExecutor.execute(JobExecutor.java:83)
+	com.glide.schedule.GlideScheduleWorker.executeJob(GlideScheduleWorker.java:204)
+	com.glide.schedule.GlideScheduleWorker.process(GlideScheduleWorker.java:142)
+	com.glide.schedule.GlideScheduleWorker.run(GlideScheduleWorker.java:59)
+</example_stack_trace>
+        <script_name>JSON</script_name>
+        <source_scope display_value="KB Auto Retire">b52bef50db602200b633d450cf96191e</source_scope>
+        <sys_class_name>sys_scope_script_access</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-07-07 21:07:56</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e124186cdb602200b633d450cf961923</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>JSON</sys_name>
+        <sys_package display_value="KB Auto Retire" source="x_65651_kb_auto_re">b52bef50db602200b633d450cf96191e</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="KB Auto Retire">b52bef50db602200b633d450cf96191e</sys_scope>
+        <sys_update_name>sys_scope_script_access_e124186cdb602200b633d450cf961923</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-07-07 21:07:56</sys_updated_on>
+        <target_scope display_value="Global">global</target_scope>
+    </sys_scope_script_access>
+</record_update>

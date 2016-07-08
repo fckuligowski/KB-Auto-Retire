@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>KB Auto Retire</name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2016-07-07 18:12:17</run_start>
+        <run_time>1970-01-01 11:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[// Get a list of documents that have expired
+var gdt = new GlideDate();
+var grKB = new GlideRecord('kb_knowledge');
+grKB.addQuery('valid_to', '<=', gdt);
+grKB.addQuery('kb_knowledge_base.x_65651_kb_auto_re_auto_retire', 'true');
+grKB.addQuery('workflow_state', 'published');
+grKB.query();
+while (grKB.next()) {
+	if (grKB.kb_knowledge_base.kb_version == "3") {
+		gs.info('Starting Retire workflow for ' + grKB.number + ' - ' + grKB.short_description);
+		gs.info('context=' + startWF(grKB));
+		// Set state to pending so that we only run this script on that KB once.
+		// We cannot do this within the WF, b/c we can't do a current.update() in there,
+		// and for some reason setting the Stage on an Activity in a WF isn't working.
+		grKB.workflow_state = 'pending_retirement';
+		grKB.update();
+	}  else if (grKB.kb_knowledge_base.kb_version == "2") {
+		gs.info('Retiring ' + grKB.number + ' - ' + grKB.short_description);
+		grKB.workflow_state = 'retired';
+		grKB.update();
+	}
+}
+
+// Start the Auto-Retire Workflow for the KB document, depending on what
+// Workflow is defined for that Knowledge Base.
+// NOTE:  We cannot run workflows that came OOTB, because they have Global
+// scope and cannor be run from other application scopes (Svc Now sux).
+function startWF(grKB) {
+	var rtn = '';
+	var wf = '';
+	if (!grKB.kb_knowledge_base.retire_workflow.nil()) {
+		wf = grKB.kb_knowledge_base.retire_workflow;
+		var wf_obj = new global.Workflow();
+		var ip = {u_initial_workflow_state: grKB.workflow_state};
+		gs.info('ip=' + ip.u_initial_workflow_state);
+		rtn = wf_obj.startFlow(wf, grKB, grKB.operation(), ip);
+	}
+	return rtn;
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-07-07 18:13:26</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>6cfb67d0db602200b633d450cf961991</sys_id>
+        <sys_mod_count>26</sys_mod_count>
+        <sys_name>KB Auto Retire</sys_name>
+        <sys_package display_value="KB Auto Retire" source="x_65651_kb_auto_re">b52bef50db602200b633d450cf96191e</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="KB Auto Retire">b52bef50db602200b633d450cf96191e</sys_scope>
+        <sys_update_name>sysauto_script_6cfb67d0db602200b633d450cf961991</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-07-08 17:35:01</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

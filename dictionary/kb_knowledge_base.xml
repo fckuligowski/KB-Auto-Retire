@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Knowledge Base" max_length="40" name="kb_knowledge_base" type="collection">
+        <element hint="Automatically start the Retire workflow when the KB document's Valid To date has been reached." label="Auto Retire" max_length="40" name="x_65651_kb_auto_re_auto_retire" type="boolean"/>
+    </element>
+</database>
